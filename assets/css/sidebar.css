@@ -1,0 +1,197 @@
+.sidebar1 {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 100;
+  margin-top: 60px;
+  margin-left: -310px;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  background: #1b1b1b;
+  overflow: auto;
+}
+
+.sidebar1.active {
+  margin-left: 0px;
+}
+
+.sidebar1 i {
+  padding-right: 15px;
+}
+
+.sidebar1 .sidebar .text {
+  color: white;
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 65px;
+  text-align: center;
+  background: #1e1e1e;
+  letter-spacing: 1px;
+}
+
+.sidebar1 nav ul {
+  background: #1b1b1b;
+  height: 100%;
+  width: 100%;
+  list-style: none;
+}
+
+.sidebar1 nav ul li {
+  line-height: 60px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar1 nav ul li:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sidebar1 nav ul li a {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding-left: 40px;
+  font-weight: 500;
+  display: block;
+  width: 100%;
+  border-left: 3px solid transparent;
+}
+
+.sidebar1 nav ul li.active a {
+  color: cyan;
+  background: #1e1e1e;
+  border-left-color: cyan;
+}
+
+.sidebar1 nav ul li a:hover {
+  background: #1e1e1e;
+}
+
+.sidebar1 nav ul ul {
+  position: static;
+  display: none;
+}
+
+.sidebar1 nav ul .feat-show.show {
+  display: block;
+}
+
+.sidebar1 nav ul .serv-show.show1 {
+  display: block;
+}
+
+.sidebar1 nav ul .three-show.show2 {
+  display: block;
+}
+
+.sidebar1 nav ul ul li {
+  line-height: 42px;
+  border-top: none;
+}
+
+.sidebar1 nav ul ul li a {
+  font-size: 17px;
+  color: #e6e6e6;
+  padding-left: 60px;
+}
+
+.sidebar1 nav ul li.active ul li a {
+  color: #e6e6e6;
+  background: #1b1b1b;
+  border-left-color: transparent;
+}
+
+.sidebar1 nav ul ul li a:hover {
+  color: cyan !important;
+  background: #1e1e1e !important;
+}
+
+.sidebar1 .first {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  font-size: 22px;
+  -webkit-transition: -webkit-transform 0.4s;
+  transition: -webkit-transform 0.4s;
+  transition: transform 0.4s;
+  transition: transform 0.4s, -webkit-transform 0.4s;
+}
+
+.sidebar1 .second {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  font-size: 22px;
+  -webkit-transition: -webkit-transform 0.4s;
+  transition: -webkit-transform 0.4s;
+  transition: transform 0.4s;
+  transition: transform 0.4s, -webkit-transform 0.4s;
+}
+
+.sidebar1 .three {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  font-size: 22px;
+  -webkit-transition: -webkit-transform 0.4s;
+  transition: -webkit-transform 0.4s;
+  transition: transform 0.4s;
+  transition: transform 0.4s, -webkit-transform 0.4s;
+}
+
+.sidebar1 nav ul li a i.rotate {
+  -webkit-transform: translateY(-50%) rotate(-180deg);
+          transform: translateY(-50%) rotate(-180deg);
+}
+
+@media (max-width: 860px) {
+  .sidebar1 {
+    height: auto;
+    width: 70px;
+    left: 0;
+    margin: 100px 0;
+  }
+  .sidebar1 nav ul ul li a {
+    padding-left: 40px !important;
+    padding-top: 10px;
+  }
+  .sidebar1 nav .first {
+    visibility: hidden;
+  }
+  .sidebar1 nav .first:hover {
+    visibility: visible;
+  }
+  .sidebar1 nav .second {
+    display: none;
+  }
+  .sidebar1 .text {
+    display: none;
+  }
+  .sidebar1 .sidebar span {
+    position: absolute;
+    margin-left: 23px;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .sidebar1 .sidebar a {
+    height: 60px !important;
+  }
+  .sidebar1 .sidebar a i {
+    margin-left: -15px;
+  }
+  .sidebar1 a:hover {
+    width: 230px !important;
+    background: inherit;
+  }
+  .sidebar1 .sidebar a:hover span {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+/*# sourceMappingURL=sidebar.css.map */

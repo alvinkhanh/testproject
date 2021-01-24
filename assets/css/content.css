@@ -1,0 +1,281 @@
+.jumbotron {
+  width: 100%;
+  padding: 15px 20px;
+  height: 350px;
+  max-height: 450px;
+}
+
+.jumbotron #isi-jumbotron {
+  margin-top: 40px;
+  padding-left: 40px;
+}
+
+.waktu .datetime {
+  color: white;
+  background: #333341;
+  width: 260px;
+  max-width: 260px;
+  height: 100px;
+  padding: 15px 10px;
+  border: 3px solid lightblue;
+  border-radius: 5px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transition-property: background, -webkit-box-shadow;
+  transition-property: background, -webkit-box-shadow;
+  transition-property: background, box-shadow;
+  transition-property: background, box-shadow, -webkit-box-shadow;
+}
+
+.waktu .date {
+  font-size: 10px;
+  font-weight: 300;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+.waktu .time {
+  font-size: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.waktu .datetime:hover {
+  background: lightskyblue;
+  -webkit-box-shadow: 0 0 30px lightskyblue;
+          box-shadow: 0 0 30px lightskyblue;
+}
+
+.waktu .time span:not(:last-child) {
+  position: relative;
+  margin: 0 2px;
+  font-weight: center;
+  letter-spacing: 3px;
+}
+
+.waktu .time span:last-child {
+  background: #2e94e3;
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+  padding: 0 5px;
+  border-radius: 3px;
+}
+
+/*info panel*/
+.info-panel {
+  -webkit-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 3px 20px rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  margin-top: -140px;
+  max-width: 800px;
+  background-color: white;
+  padding: 40px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.info-panel .card h5 {
+  padding-top: 40px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.card-icon {
+  position: absolute;
+  z-index: 0;
+  top: 25px;
+  right: 4px;
+  opacity: 0.4;
+  font-size: 90px;
+}
+
+.content2 {
+  padding-top: 30px;
+  max-width: 900px;
+}
+
+.content2 #isi2 #activity {
+  height: 400px;
+  max-width: 400px;
+}
+
+.content2 #isi2 #activity .taks {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 20px 0;
+  padding: 20px 10px 18px;
+  background: salmon;
+  overflow: hidden;
+  border: 2px solid black;
+  border-radius: 8px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.content2 #isi2 #activity:hover .taks {
+  opacity: 0.5;
+}
+
+.content2 #isi2 #activity .taks:hover {
+  opacity: 1;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.content2 #isi2 #activity .nama-taks {
+  position: relative;
+  width: 110px;
+  text-align: right;
+  color: black;
+  margin-top: -2px;
+  text-transform: uppercase;
+}
+
+.content2 #isi2 #activity .value {
+  position: relative;
+  width: 40px;
+  text-align: left;
+  color: black;
+  margin-top: -2px;
+  text-transform: uppercase;
+}
+
+.content2 #isi2 #activity .percent {
+  position: relative;
+  width: calc(100% - 150px);
+  height: 20px;
+  margin: 0 10px;
+  border-radius: 10px;
+  background: white;
+  -webkit-box-shadow: inset 0 0 10px black;
+          box-shadow: inset 0 0 10px black;
+  overflow: hidden;
+}
+
+.content2 #isi2 #activity .percent .progres {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70%;
+  height: 100%;
+  border-radius: 10px;
+  background: blue;
+  -webkit-box-shadow: inset 0 0 2px black;
+          box-shadow: inset 0 0 2px black;
+  -webkit-animation: animate 4s ease-in-out forwards;
+          animation: animate 4s ease-in-out forwards;
+}
+
+@-webkit-keyframes animate {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes animate {
+  from {
+    width: 0;
+  }
+}
+
+.content2 #isi2 #activity .taks:nth-child(1) .percent .progres {
+  background: linear-gradient(45deg, green, yellow);
+}
+
+.content2 #isi2 #activity .taks:nth-child(2) .percent .progres {
+  background: linear-gradient(45deg, green, yellow);
+}
+
+.content2 #isi2 #activity .taks:nth-child(3) .percent .progres {
+  background: linear-gradient(45deg, green, yellow);
+}
+
+.content2 #isi2 #activity .taks:nth-child(4) .percent .progres {
+  background: linear-gradient(45deg, green, yellow);
+}
+
+.content2 #bungkus2 {
+  padding: 20px;
+}
+
+.content2 #bungkus2 #table {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  overflow: auto;
+}
+
+@media only screen and (max-width: 992px) {
+  .content2 {
+    max-width: 800px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .jumbotron {
+    width: 100%;
+    padding: 15px 20px;
+    height: 400px;
+  }
+  .jumbotron #isi-jumbotron {
+    text-align: center;
+    margin-top: 20px;
+    padding-left: 20px;
+  }
+  .jumbotron #teks {
+    -webkit-box-flex: 100%;
+        -ms-flex: 100%;
+            flex: 100%;
+    max-width: 100%;
+  }
+  .jumbotron #waktu {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    justify-items: center;
+    -webkit-box-flex: 1;
+        -ms-flex: auto;
+            flex: auto;
+    max-width: 100%;
+  }
+  .info-panel {
+    max-width: 600px;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+  .info-panel .card-isi2 {
+    width: 100%;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    display: inline;
+  }
+  .info-panel .card-isi2 .col-8 {
+    max-width: 100%;
+    text-align: center;
+  }
+  .info-panel .card-isi2 .col-4 {
+    width: 400px !important;
+    margin-left: 100px;
+  }
+}
+/*# sourceMappingURL=content.css.map */

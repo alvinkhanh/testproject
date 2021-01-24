@@ -1,0 +1,44 @@
+#ubah_mahasiswa #table_gambar{
+    padding-top: 20px;
+}
+#table_gambar #card_gambar {
+    margin-left: 30px!important;
+}
+// atur_matkul
+#page-content #atur_matkul{
+    height: 800px;
+    padding-top: 30px;
+    padding-left: 60px;
+    font-weight: 500;
+
+    & .row{
+        margin: 0;
+    }
+}
+
+#page-content #atur_matkul .page-header{
+    padding-top: 30px;
+    font-size: 32px;
+}
+
+#page-content #daftar_dosen .card-body{
+    min-height: 600px;
+}
+#page-content #daftar_dosen .row{
+    margin: 0;
+}
+
+// output tambah dosen
+#page-content #form_tambah #output{
+    width: 100%;
+    max-width: 400px;
+    max-height: 600px;
+    padding: 30px;
+    margin-top: 10px;
+    border: 1px solid black;
+}
+
+#ubah_gambar_dosen{
+    text-align: center;
+    text-align: -webkit-center;
+}

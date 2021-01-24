@@ -1,0 +1,353 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: 0;
+    list-style: none;
+}
+body{
+    font-family: 'sans-serif';
+    background: oldlace;
+}
+
+a,
+a:hover,
+a:focus {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s; 
+}
+
+  
+.wrapper{
+    display: flex;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    
+    & .container-fluid{
+        padding: 0px;
+    }
+    & #page-content{
+        margin-top: 60px;
+    }
+    & #content-wrapper {
+        width: 100%;
+        overflow:auto;
+      }
+      
+      & #content-wrapper #content {
+        flex: 1 0 auto;
+      }
+    
+    &.active #page-content{
+        padding-left: 250px;
+        transition: all 0.3s ease-in-out; 
+    }
+}
+
+.content{
+    width: 100%;
+   
+}
+
+.topbar{
+    & .navbar{
+        position: fixed;
+        z-index: 200;
+        width: 100%;
+        top: 0;
+        right: 0;
+        height: 70px;
+    }
+    & .navbar .nav-icon1{
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+    }
+    & .navbar .navbar-brand{
+        font-size: 35px;
+        font-weight: bold;
+        padding: 0 60px;
+        margin-top: 10px;
+    }
+    & .navbar .topnav li {
+        display: inline-block;
+        padding-right: 30px;
+        margin-top: 15px;
+    }
+    & .navbar .topnav a{
+        font-size: 18px;
+        color: white;
+        // menjadi capital
+        border: 1px solid transparent;
+        padding: 7px 10px;
+        border-radius: 3px;
+    }
+    & .navbar .topnav a.active,
+    & .navbar .topnav a:hover {
+        border: 1px solid white;
+        transition: 0.5s;
+    }
+    & .navbar form{
+        display: flex;
+        height: 40px;
+        border-radius: 2px;
+        background: inherit;
+        padding: 2px;
+        min-width: 16%!important;
+        border: 1px solid black;
+        margin-right: 30px;
+    }
+    & .navbar form .data-search{
+    height: 100%;
+    width: 100%;
+    padding: 0 10px;
+    font-weight: 500;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 17px;
+    }
+    & .navbar form button{
+    padding: 0 15px;
+    background: orangered;
+    border: none;
+    cursor: pointer;
+    color: white;
+    border-radius: 2px;
+    font-size: 17px;
+    }
+    & .navbar .menu-icon span,
+    & .navbar .search-icon{
+        width: 40px;
+        color: white;
+        text-align: center;
+        margin: 0 70px;
+        font-size: 17px;
+        cursor: pointer;
+        display: none;
+    }
+     // profile dropdown
+     & .navbar .action{
+        position: fixed;
+        top: 5px;
+        right: 10px;
+    }
+    & .navbar .action .profile{
+        position: relative;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    & .navbar .action .profile img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    & .navbar .action .menu-profile{
+        position: absolute;
+        top: 120px;
+        right: 10px;
+        padding: 10px 20px;
+        background: white;
+        width: 200px;
+        box-sizing:  0 5px 25px rgba(0,0,0,0.1);
+        transition: 0.5s;
+        visibility: hidden;
+        opacity: 0;
+    }
+    & .navbar .action .menu-profile.active{
+        visibility: visible;
+        opacity: 1;
+        top: 80px;
+    }
+    & .navbar .action .menu-profile::before{
+        content: '';
+        position: absolute;
+        top: -5px;
+        right: 8px;
+        background: white;
+        width: 20px;
+        height: 20px;
+        transform: rotate(45deg) ;
+    }
+    & .navbar .action .menu-profile h3{
+        width: 100%;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 500;
+        color: black;
+    }
+    & .navbar .action .menu-profile .subspan{
+        font-size: 14px;
+        color: #cecece;
+        font-weight: 400;
+    }
+
+    & .navbar .action .menu-profile ul li{
+        list-style: none;
+        border-top:  1px solid rgba(0,0,0,0.1);
+        display: flex;
+        margin-top: 5px;
+        align-items: center;
+    }
+    & .navbar .action .menu-profile a{
+       color: black;
+       transition: 0.5s;
+    }
+    & .navbar .action .menu-profile a:hover, a:active{
+        color: rgb(250, 7, 7);
+    }
+    & .navbar .action .menu-profile ul li a{
+        display: inline-block;
+        text-decoration: none;
+        color: black;
+    }
+    & .navbar .action .menu-profile ul li span{
+        padding-left: 10px;
+    }
+}
+
+
+// screen
+
+@media only screen and (max-width: 860px){
+    .topbar{
+        & .navbar{
+            position: fixed;
+            z-index: 200;
+            width: 100%;
+            top: 0;
+            right: 0;
+            height: 70px;
+            line-height: 20px;
+            transition: all 0.5s;
+        }
+        & .navbar .nav-icon1{
+            display: none;
+            transition: all 0.5s;
+        }
+        & .navbar .navbar-brand{
+            font-size: 35px;
+            font-weight: bold;
+            padding: 0 10px;
+            margin-top: 10px;
+        }
+    }
+    .wrapper{
+        &.active #page-content{
+            padding-left: 0px;
+        }
+    }
+}
+
+@media only screen and (max-width: 649px){
+    .topbar{
+        & .navbar form{
+            position: absolute;
+            margin-top: 100px;
+            margin-left: 170px;
+            opacity: 0;
+            pointer-events: none;
+            transition: top 0.5s ease, opacity 0.1s ease;
+        }
+
+        & .navbar form.active{
+            opacity: 1;
+            pointer-events: auto;
+            margin-top: 150px;
+            margin-left: 170px;
+
+        }
+        & .navbar form:before{
+            position: absolute;
+            content:"";
+            right: 0;
+            width: 0;
+            height: 0;
+            z-index: -1;
+            margin: -33px 140px 0;
+            border: 10px solid transparent;
+            border-bottom-color: #343a40 ;
+        }
+        & .navbar form:after{
+            position: absolute;
+            content:"";
+            height: 60px;
+            left: 50%;
+            top: 50%;
+            width: calc(100% + 10%);
+            background: inherit;
+            z-index: -2;
+            transform: translate(-50%, -50%);
+        }
+
+        & .navbar .search-icon,
+        & .navbar .menu-icon span{
+            display: block;
+            margin: 0px;
+        }
+    }
+}
+
+.table-responsive{
+    text-align: center;
+    
+}
+
+@media only screen and (max-width: 375px){
+    .topbar{
+        & .navbar form{
+            position: absolute;
+            margin-top: 100px;
+            margin-left: 50px;
+            opacity: 0;
+            pointer-events: none;
+            transition: top 0.5s ease, opacity 0.1s ease;
+        }
+        & .navbar form.active{
+            opacity: 1;
+            pointer-events: auto;
+            margin-top: 150px;
+        }
+        & .navbar form:before{
+            position: absolute;
+            content:"";
+            right: 0;
+            width: 0;
+            height: 0;
+            z-index: -1;
+            margin: -33px -9px 0;
+            border: 10px solid transparent;
+            border-bottom-color: #343a40 ;
+        }
+        & .navbar form:after{
+            position: absolute;
+            content:"";
+            height: 60px;
+            left: 50%;
+            top: 50%;
+            width: calc(100% + 10%);
+            background: inherit;
+            z-index: -2;
+            transform: translate(-50%, -50%);
+        }
+
+        & .navbar .list-unstyled {
+            margin-left: -8px;
+        }
+        & .navbar .search-icon,
+        & .navbar .menu-icon span{
+            display: block;
+            margin: 0px;
+        }
+    }
+}
+
+@import 'components/tambah_mahasiswa';
+@import 'components/daftar_table';
+@import 'components/footer';

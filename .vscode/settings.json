@@ -1,0 +1,10 @@
+{
+    "git.allowForcePush": true,
+    "git.alwaysShowStagedChangesResourceGroup": true,
+    "git.autofetch": true,
+    "explorer.openEditors.visible": 0,
+    "editor.fontSize": 24,
+    "editor.lineHeight": 40,
+    "editor.fontFamily": "'FiraCode',Prompt',Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": true
+}

@@ -216,7 +216,7 @@ $kelasdb = query("SELECT * FROM kelas");
             }else{
             ?>
                 <script type="text/javascript">
-                alert("Input Data Gagal !")
+                alert("Input Data Tidak berhasil !")
                 window.location="daftar_kelas.php";
                 </script>
             <?php

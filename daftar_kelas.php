@@ -303,7 +303,7 @@ $kelasdb = query("SELECT * FROM kelas");
       <!-- footer -->
     <footer class ="footer" >
         <div class="card-footer text-muted">
-            2 days ago
+            3 days ago
         </div>
     </footer>
        

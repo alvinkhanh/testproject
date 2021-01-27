@@ -13,6 +13,6 @@
 	$dewan1->execute();
 	$res1 = $dewan1->get_result();
 	while ($row = $res1->fetch_assoc()) {
-		echo "<option value='" . $row['id_mengajar'] . "'>" . $row['nama'] . "--" . $row['nama_matkul'] . "</option>";
+		echo "<option value='" . $row['id_mengajar'] . "'>" . $row['nama'] .  "</option>";
 	}
 ?>

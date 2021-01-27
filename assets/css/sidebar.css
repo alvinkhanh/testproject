@@ -84,6 +84,10 @@
   display: block;
 }
 
+.sidebar1 nav ul .four-show.show3 {
+  display: block;
+}
+
 .sidebar1 nav ul ul li {
   line-height: 42px;
   border-top: none;
@@ -133,6 +137,19 @@
 }
 
 .sidebar1 .three {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  font-size: 22px;
+  -webkit-transition: -webkit-transform 0.4s;
+  transition: -webkit-transform 0.4s;
+  transition: transform 0.4s;
+  transition: transform 0.4s, -webkit-transform 0.4s;
+}
+
+.sidebar1 .four {
   position: absolute;
   top: 50%;
   right: 20px;

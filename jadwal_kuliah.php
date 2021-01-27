@@ -5,7 +5,7 @@ if($_SESSION['role']==""){
     header("location: login.php?pesan=gagal");
    }
 require 'assets/function/function.php';
-  
+
   ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +16,7 @@ require 'assets/function/function.php';
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/6080ba356b.js" crossorigin="anonymous"></script>
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <!-- my css -->
     <link rel="stylesheet" href="assets/css/content.css">
@@ -25,7 +26,46 @@ require 'assets/function/function.php';
     <title>Project 1</title>
 </head>
 <body>
-   
+<style>
+            body {font-family: Arial;}
+
+            /* Style the tab */
+            .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            }
+
+            /* Style the buttons inside the tab */
+            .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+            }
+
+            /* Change background color of buttons on hover */
+            .tab button:hover {
+            background-color: #ddd;
+            }
+
+            /* Create an active/current tablink class */
+            .tab button.active {
+            background-color: #ccc;
+            }
+
+            /* Style the tab content */
+            .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+            }
+</style>
     <!-- pembungkus -->
 <div class="wrapper">
         <!-- sidebar -->
@@ -124,7 +164,7 @@ require 'assets/function/function.php';
     <div class="col-lg-12" style="margin-top:-10px;">
         <h1 class="page-header">
             Halaman
-            <small>Mata Kuliah</small>
+            <small>Jadwal Kuliah</small>
         </h1>
     </div>
 </div>
@@ -133,82 +173,85 @@ require 'assets/function/function.php';
 <div class="row">
     <div class="col-lg-5">
         <h3 class="page-header">
-            Atur Mata Kuliah
+            Tambah Jadwal Kuliah
         </h3>
         <form method="post">
-        <div class="form-group">
-                <label>Nama Jurusan</label>
-                <select name="kode_jurusan" class="form-control" required>
-                    <option value="">Pilih jurusan</option>
-                    <?php 
-                        $query=mysqli_query($conn, "SELECT * FROM jurusan order by id asc");
-                        while ($row=mysqli_fetch_array($query)) {
-                            ?>
-                        <option value="<?php  echo $row['kode_jurusan']; ?>"><?php  echo $row['nama_jurusan']; ?></option>
-                    <?php
-                        }
-                ?>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Nama Dosen</label>
-                <select name="kode_dosen" class="form-control" required>
-                    <option value="">Pilih Dosen</option>
-                    <?php 
-                        $query=mysqli_query($conn, "SELECT * FROM dosen order by nrd asc");
-                        while ($row=mysqli_fetch_array($query)) {
-                            ?>
-                        <option value="<?php  echo $row['kode_dosen']; ?>"><?php  echo $row['nama']; ?></option>
-                    <?php
-                        }
-                ?>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Mata Kuliah</label>
-                <select name="kode_matkul" class="form-control" required>
-                    <option value="">Pilih Matkul</option>
-                    <?php 
-                        $query=mysqli_query($conn, "SELECT * FROM matkul order by kode_matkul asc");
-                        while($row=mysqli_fetch_array($query))
-                        {
-                    ?>
-                        <option value="<?php  echo $row['kode_matkul']; ?>"><?php  echo $row['nama_matkul']; ?></option>
-                    <?php 
-                        }
-                ?>
-                </select>
-            </div>
-            <button type="submit" name="input" class="btn btn-primary" value="Input"/>Tambah</button>
+        <div class="col-lg-12">
+                    <div class="form-group">
+                        <label>Hari</label>
+                        <select name="hari" class="form-control" required>
+                            <option value="">Pilih Hari</option>
+                            <option value="Senin">Senin</option>
+                            <option value="Selasa">Selasa</option>
+                            <option value="Rabu">Rabu</option>
+                            <option value="Kamis">Kamis</option>
+                            <option value="Jumat">Jum'at</option>
+                            <option value="Sabtu">Sabtu</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Jurusan</label>
+                        <select name="jurusan" id="jurusan" class="form-control" required>
+                                <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Kelas</label>
+                        <select name="kelas" id="kelas" class="form-control" required>
+                                <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Dosen & Matkul</label>
+                        <select name="mengajar" id="mengajar" class="form-control" required>
+                                <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label>Jam Mulai</label>
+                        <input type="time" class="form-control" name="jam_mulai" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Jam Selesai</label>
+                        <input type="time" class="form-control" name="jam_berakhir" required>
+                    </div>
+                    <button type="submit" name="input" class="btn btn-primary" value="Input"/> Tambah </button>
+                </div>
         </form>
 
         <!-- Script Input -->
-        <?php 
+        <?php
         if(@$_POST['input']){
-            $kode_jurusan=strtoupper($_POST['kode_jurusan']);
-            $kode_dosen=strtoupper($_POST['kode_dosen']);
-            $kode_matkul=strtoupper($_POST['kode_matkul']);
+            $id_mengajar=$_POST['id_mengajar'];
+            $hari=$_POST['hari'];
+            $jam_mulai=$_POST['jam_mulai'];
+            $jam_berakhir=$_POST['jam_berakhir'];
+            $kelas=$_POST['kelas'];
             
-            
-            $query=mysqli_query($conn, "INSERT INTO mengajar(kode_jurusan, kode_dosen, kode_matkul) values('$kode_jurusan','$kode_dosen','$kode_matkul')") or die (mysqli_error());
+            $query=mysqli_query($conn, "insert into tb_jadwal(id_mengajar, hari, jam_mulai, jam_berakhir, id_kelas) 
+                                values('$id_mengajar','$hari', '$jam_mulai', '$jam_berakhir',  '$kelas')") 
+                                or die (mysqli_error());
             
             if($query){
             ?>
                 <script type="text/javascript">
                 alert("Input Data Sukses !")
-                window.location="atur_matkul.php";
+                window.location="?page=lihatroster";
                 </script>
             <?php
             }else{
             ?>
                 <script type="text/javascript">
                 alert("Input Data Gagal !")
-                window.location="atur_matkul.php";
+                window.location="?page=lihatroster";
                 </script>
             <?php
             } 
         }
-        ?>
+    ?>
     </div>
 
 
@@ -252,6 +295,72 @@ require 'assets/function/function.php';
         </div>
     </div>
 </div>
+<div class="col-lg-12">
+                    <div class="row">
+                    <div class="col-lg-12">
+                        <div class="tab">
+                                <?php
+                                    $kelas2 = mysqli_query($conn, "select * from jurusan");
+                                    while($row2=mysqli_fetch_array($kelas2)){
+                                    $kelas=$row2['nama_jurusan'];
+                                        // $kelas3 = mysqli_query($conn, "SELECT * from jurusan where nama_jurusan = '$kelas'");
+                                        // $ruw = mysqli_fetch_array($kelas3);
+                                    ?>
+                            
+                                <button class="tablinks" onclick="openCity(event, '<?php echo $row2['nama_jurusan']; ?>')"><?php echo $row2['nama_jurusan']; ?></button>
+                                <?php
+                                        }
+                                    ?>
+                                </div>
+                                     <?php
+                                        $kelas2 = mysqli_query($conn, "select * from jurusan");
+                                        while($row2=mysqli_fetch_array($kelas2)){
+                                        $kelas=$row2['nama_jurusan'];
+                                            // $kelas3 = mysqli_query($conn, "select * from jurusan where nama_jurusan = '$kelas'");
+                                            // $ruw = mysqli_fetch_array($kelas3);
+                                        ?>
+                                <div id="<?php echo $row2['nama_jurusan']; ?>" class="tabcontent">                               
+                                    <h4 class="page-header" style="margin-top:7px;" align="center">
+                                        Daftar Kelas
+                                    </h4>
+                                    <table class="table table-hover table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-md-2">No</th>
+                                                <th class="col-md-2">Kelas</th>
+                                                <th class="col-md-4">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                      
+                                                <?php
+                                                $i = 1;
+                                                    // $view1=mysqli_query($conn, "SELECT 
+                                                    // kelas.id, kelas.kode_jurusan, kelas.nama_jurusan, kelas.kelas, jurusan.id, jurusan.kode_jurusan, jurusan.nama_jurusan
+                                                    // FROM kelas, jurusan
+                                                    // WHERE kelas.id=jurusan.id AND kelas.kode_jurusan=jurusan.kode_jurusan AND kelas.nama_jurusan='$kelas
+                                                    // order by nama_jurusan asc");
+                                                    $view1= mysqli_query($conn, "SELECT * FROM kelas WHERE nama_jurusan= '$kelas'");
+                                                    while($raw1=mysqli_fetch_array($view1)){
+                                                    // ?>
+                                            <tr>
+                                                <td><?= $i ?></td>
+                                                <td><?php echo $raw1['kelas'];?></td>
+                                                <td><i><a href="?page=editroster&id=<?php echo $raw1['id_jadwal'];?>">Edit</a> / <a onclick="return confirm('Yakin akan hapus data ini ?')" href="roster_hapus.php?id=<?php echo $raw1['id_jadwal'];?>">Hapus</a></i></td>
+                                            </tr>
+                                            <?php
+                                                    }
+                                                    $i++;
+                                                ?>
+                                        </tbody>
+                                    </table>
+                                </div> 
+                                <?php
+                                    }
+                                ?>          
+                        </div>
+                    </div>
+                </div>
 </div>
 <!-- isi close -->
 
@@ -274,7 +383,7 @@ require 'assets/function/function.php';
 </div>
 
 <!-- wrapper close -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
@@ -283,5 +392,22 @@ require 'assets/function/function.php';
         integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous">
     </script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/jadwal.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+            function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+            }
+</script>
 </body>
 </html>

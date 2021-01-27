@@ -26,6 +26,10 @@ $('#sidebarBar').on('click', function () {
           $('nav ul .three-show').toggleClass("show2");
           $('nav ul .three').toggleClass("rotate");
         });
+        $('.four-btn').click(function(){
+          $('nav ul .four-show').toggleClass("show3");
+          $('nav ul .four').toggleClass("rotate");
+        });
       // hover effect active
       $('nav ul li').click(function(){
         $(this).addClass("active").siblings().removeClass("active");

@@ -21,12 +21,12 @@
 			  });
 		  });
 
-        $("#kelas").change(function(){
-      	var kelas = $("#kelas").val();
+        $("#jurusan").change(function(){
+      	var kelas = $("#jurusan").val();
           	$.ajax({
           		type: 'POST',
               	url: "jadwal/get_mengajar.php",
-              	data: {kelas: kelas},
+              	data: {jurusan: jurusan},
               	cache: false,
               	success: function(msg){
                   $("#mengajar").html(msg);

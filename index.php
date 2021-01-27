@@ -74,10 +74,10 @@ if (isset ($_POST["cari"])) {
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="three-btn"><i class="fas fa-user-circle"></i><span>Jurusan</span>
-                                <i class="fas fa-caret-down three"></i>
+                            <a href="#" class="four-btn"><i class="fas fa-user-circle"></i><span>Jurusan</span>
+                                <i class="fas fa-caret-down four"></i>
                             </a>
-                            <ul class="three-show">
+                            <ul class="four-show">
                                 <li><a href="daftar_jurusan.php"><i class="fas fa-search"></i><span>Daftar Jurusan</span></a></li>
                                 <li><a href="daftar_kelas.php"><i class="fas fa-search"></i><span>Daftar Kelas</span></a></li>
                             </ul>
@@ -378,8 +378,15 @@ if (isset ($_POST["cari"])) {
 
       <!-- footer -->
     <footer class ="footer" >
-        <div class="card-footer text-muted">
-            2 days ago
+    <div class="container text-center">
+          <div class="row">
+            <div class="col-sm-12">
+              <p><i class="glyphicon glyphicon-copyright-mark"></i> Copyright 2020 | built with <i class="glyphicon glyphicon-music"></i> | built by. <a href=""></a>Alvin Khanh Rishad </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12"><a href="https://www.youtube.com/watch?v=btYCEsKJ5k4&list=PLFIM0718LjIVWpIhlNA_sU-4ZWvN4uSmb&index=2" class="btn btn-danger"><i class="glyphicon glyphicon-thumbs-up"></i> Like My IG</a></div>
+          </div>
         </div>
     </footer>
        

@@ -1,6 +1,7 @@
 <?php 
  // koneksi database
 $conn = mysqli_connect("localhost","root","","phpdasar");
+
 // ambil data mahasiswa
 function query ($query){
 	global $conn;

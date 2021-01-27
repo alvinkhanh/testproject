@@ -68,6 +68,9 @@
       & nav ul .three-show.show2{
         display: block;
       }
+      & nav ul .four-show.show3{
+        display: block;
+      }
      & nav ul ul li{
         line-height: 42px;
         border-top: none;
@@ -103,6 +106,14 @@
         transition: transform 0.4s;
       }
       & .three{
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        font-size: 22px;
+        transition: transform 0.4s;
+      }
+      & .four{
         position: absolute;
         top: 50%;
         right: 20px;

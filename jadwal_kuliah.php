@@ -212,11 +212,11 @@ require 'assets/function/function.php';
                 <div class="col-lg-12">
                     <div class="form-group">
                         <label>Jam Mulai</label>
-                        <input type="time" class="form-control" name="jam_mulai" required>
+                        <input type="time" class="form-control" name="jam_masuk" required>
                     </div>
                     <div class="form-group">
                         <label>Jam Selesai</label>
-                        <input type="time" class="form-control" name="jam_berakhir" required>
+                        <input type="time" class="form-control" name="jam_keluar" required>
                     </div>
                     <button type="submit" name="input" class="btn btn-primary" value="Input"/> Tambah </button>
                 </div>
@@ -225,28 +225,30 @@ require 'assets/function/function.php';
         <!-- Script Input -->
         <?php
         if(@$_POST['input']){
-            $id_mengajar=$_POST['id_mengajar'];
             $hari=$_POST['hari'];
-            $jam_mulai=$_POST['jam_mulai'];
-            $jam_berakhir=$_POST['jam_berakhir'];
+            $jurusan=$_POST['jurusan'];
+            $mengajar=$_POST['mengajar'];
             $kelas=$_POST['kelas'];
+            $jam_masuk=$_POST['jam_masuk'];
+            $jam_keluar=$_POST['jam_keluar'];
             
-            $query=mysqli_query($conn, "insert into tb_jadwal(id_mengajar, hari, jam_mulai, jam_berakhir, id_kelas) 
-                                values('$id_mengajar','$hari', '$jam_mulai', '$jam_berakhir',  '$kelas')") 
+            
+            $query=mysqli_query($conn, "insert into jadwal( hari, kode_jurusan, id_mengajar, id_kelas, jam_masuk, jam_keluar) 
+                                values('$hari','$jurusan','$mengajar','$kelas', '$jam_masuk', '$jam_keluar')") 
                                 or die (mysqli_error());
             
             if($query){
             ?>
                 <script type="text/javascript">
                 alert("Input Data Sukses !")
-                window.location="?page=lihatroster";
+                window.location="jadwal_kuliah.php";
                 </script>
             <?php
             }else{
             ?>
                 <script type="text/javascript">
                 alert("Input Data Gagal !")
-                window.location="?page=lihatroster";
+                window.location="jadwal_kuliah.php";
                 </script>
             <?php
             } 
@@ -296,71 +298,55 @@ require 'assets/function/function.php';
     </div>
 </div>
 <div class="col-lg-12">
-                    <div class="row">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="tab">
+                <?php
+                    $kelas2 = mysqli_query($conn, "select * from jurusan");
+                    while($row2=mysqli_fetch_array($kelas2)){
+                    $kelas=$row2['kode_jurusan'];
+                     // $kelas3 = mysqli_query($conn, "SELECT * from jurusan where nama_jurusan = '$kelas'");
+                     // $ruw = mysqli_fetch_array($kelas3);
+                     ?>
+                            
+                    <button class="tablinks" onclick="openCity(event, '<?php echo $row2['kode_jurusan']; ?>')"><?php echo $row2['nama_jurusan']; ?></button>
+                    <?php
+                        }
+                    ?>
+            </div>
+            <?php
+                $kelas2 = mysqli_query($conn, "select * from jurusan");
+                while($row2=mysqli_fetch_array($kelas2)){
+                $kelas=$row2['kode_jurusan'];
+                 // $kelas3 = mysqli_query($conn, "select * from jurusan where nama_jurusan = '$kelas'");
+                // $ruw = mysqli_fetch_array($kelas3);
+                ?>
+                <div id="<?php echo $row2['kode_jurusan']; ?>" class="tabcontent">                               
+                   <h4 class="page-header" style="margin-top:7px;" align="center">
+                      Daftar Kelas
+                    </h4>
                     <div class="col-lg-12">
                         <div class="tab">
-                                <?php
-                                    $kelas2 = mysqli_query($conn, "select * from jurusan");
-                                    while($row2=mysqli_fetch_array($kelas2)){
-                                    $kelas=$row2['nama_jurusan'];
-                                        // $kelas3 = mysqli_query($conn, "SELECT * from jurusan where nama_jurusan = '$kelas'");
-                                        // $ruw = mysqli_fetch_array($kelas3);
-                                    ?>
-                            
-                                <button class="tablinks" onclick="openCity(event, '<?php echo $row2['nama_jurusan']; ?>')"><?php echo $row2['nama_jurusan']; ?></button>
-                                <?php
-                                        }
-                                    ?>
-                                </div>
-                                     <?php
-                                        $kelas2 = mysqli_query($conn, "select * from jurusan");
-                                        while($row2=mysqli_fetch_array($kelas2)){
-                                        $kelas=$row2['nama_jurusan'];
-                                            // $kelas3 = mysqli_query($conn, "select * from jurusan where nama_jurusan = '$kelas'");
-                                            // $ruw = mysqli_fetch_array($kelas3);
-                                        ?>
-                                <div id="<?php echo $row2['nama_jurusan']; ?>" class="tabcontent">                               
-                                    <h4 class="page-header" style="margin-top:7px;" align="center">
-                                        Daftar Kelas
-                                    </h4>
-                                    <table class="table table-hover table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th class="col-md-2">No</th>
-                                                <th class="col-md-2">Kelas</th>
-                                                <th class="col-md-4">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                      
-                                                <?php
-                                                $i = 1;
-                                                    // $view1=mysqli_query($conn, "SELECT 
-                                                    // kelas.id, kelas.kode_jurusan, kelas.nama_jurusan, kelas.kelas, jurusan.id, jurusan.kode_jurusan, jurusan.nama_jurusan
-                                                    // FROM kelas, jurusan
-                                                    // WHERE kelas.id=jurusan.id AND kelas.kode_jurusan=jurusan.kode_jurusan AND kelas.nama_jurusan='$kelas
-                                                    // order by nama_jurusan asc");
-                                                    $view1= mysqli_query($conn, "SELECT * FROM kelas WHERE nama_jurusan= '$kelas'");
-                                                    while($raw1=mysqli_fetch_array($view1)){
-                                                    // ?>
-                                            <tr>
-                                                <td><?= $i ?></td>
-                                                <td><?php echo $raw1['kelas'];?></td>
-                                                <td><i><a href="?page=editroster&id=<?php echo $raw1['id_jadwal'];?>">Edit</a> / <a onclick="return confirm('Yakin akan hapus data ini ?')" href="roster_hapus.php?id=<?php echo $raw1['id_jadwal'];?>">Hapus</a></i></td>
-                                            </tr>
-                                            <?php
-                                                    }
-                                                    $i++;
-                                                ?>
-                                        </tbody>
-                                    </table>
-                                </div> 
+                            <?php
+                                $kelas2 = mysqli_query($conn, "SELECT * FROM kelas WHERE kode_jurusan='$kelas' ");
+                                while($row2=mysqli_fetch_array($kelas2)){
+                                $kelas=$row2['kelas'];
+                                // $kelas3 = mysqli_query($conn, "SELECT * from jurusan where nama_jurusan = '$kelas'");
+                                // $ruw = mysqli_fetch_array($kelas3);
+                                ?>
+                                        
+                                <button class="tablinks" onclick="openCity(event, '<?php echo $row2['kelas']; ?>')"><?php echo $row2['kelas']; ?></button>
                                 <?php
                                     }
-                                ?>          
+                                ?>
                         </div>
-                    </div>
-                </div>
+                        </div>
+            <!-- akhir coba -->
+                </div> 
+            <?php
+                  }
+             ?>          
+    </div>
 </div>
 <!-- isi close -->
 
@@ -383,8 +369,7 @@ require 'assets/function/function.php';
 </div>
 
 <!-- wrapper close -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
     </script>
@@ -393,7 +378,7 @@ require 'assets/function/function.php';
     </script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/jadwal.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
     <script>
             function openCity(evt, cityName) {
             var i, tabcontent, tablinks;
@@ -411,3 +396,47 @@ require 'assets/function/function.php';
 </script>
 </body>
 </html>
+
+                                   <!-- table hari -->
+                                    <!-- <div class="row">
+                                    <div class="col-lg-6">
+                                    <table class="table table-hover table-bordered table-striped">
+                                    <h4 class="page-header" style="margin-top:7px;" align="center">
+                                        SENIN
+                                    </h4>
+                                        <thead>
+                                            <tr>
+                                            <th class="col-md-4">Waktu</th>
+                                            <th class="col-md-2">MP</th>
+                                            <th class="col-md-2">KG</th>
+                                            <th class="col-md-4">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php $i = 1;?>
+
+                                                <?php
+                                                    // $view1=mysqli_query($conn, "SELECT 
+                                                    // kelas.id, kelas.kode_jurusan, kelas.nama_jurusan, kelas.kelas, jurusan.id, jurusan.kode_jurusan, jurusan.nama_jurusan
+                                                    // FROM kelas, jurusan
+                                                    // WHERE kelas.id=jurusan.id AND kelas.kode_jurusan=jurusan.kode_jurusan AND kelas.nama_jurusan='$kelas
+                                                    // order by nama_jurusan asc");
+                                                    $view1= mysqli_query($conn, "SELECT * FROM kelas WHERE nama_jurusan= '$kelas'");
+                                                    while($raw1=mysqli_fetch_array($view1)){
+                                                    // ?>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td><?php echo $raw1['kelas'];?></td>
+                                                <td><i><a href="?page=editroster&id=<?php echo $raw1['id_jadwal'];?>">Edit</a> / <a onclick="return confirm('Yakin akan hapus data ini ?')" href="roster_hapus.php?id=<?php echo $raw1['id_jadwal'];?>">Hapus</a></i></td>
+                                            </tr>
+                                            <?php
+                                                    }
+                                                ?>
+                                                 <?php
+                                                    $i++;
+                                                ?>
+                                        </tbody>
+                                    </table>
+                                </div> -->
+                                <!-- table hari close -->

@@ -12,21 +12,12 @@
 			var jurusan = $("#jurusan").val();
 				$.ajax({
 					type: 'POST',
-					url: "jadwal/get_kelas.php",
+					url: "jadwal/get_mengajar.php",
 					data: {jurusan: jurusan},
 					cache: false,
 					success: function(msg){
-					$("#kelas").html(msg);
+					$("#mengajar").html(msg);
 				  }
 			  });
-			  $.ajax({
-				type: 'POST',
-				url: "jadwal/get_mengajar.php",
-				data: {jurusan: jurusan},
-				cache: false,
-				success: function(msg){
-				$("#mengajar").html(msg);
-			  }
 		  });
-		});
      });

@@ -6,7 +6,7 @@
 
 	$query = "SELECT * FROM kelas WHERE kode_jurusan=? ORDER BY kelas ASC";
 	$dewan1 = $conn->prepare($query);
-	$dewan1->bind_param("i", $jurusan);
+	$dewan1->bind_param("s", $jurusan);
 	$dewan1->execute();
 	$res1 = $dewan1->get_result();
 	while ($row = $res1->fetch_assoc()) {

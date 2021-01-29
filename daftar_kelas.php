@@ -234,12 +234,12 @@ $kelasdb = query("SELECT * FROM kelas");
                                 <?php
                                     $kelas2 = mysqli_query($conn, "select * from jurusan");
                                     while($row2=mysqli_fetch_array($kelas2)){
-                                    $kelas=$row2['nama_jurusan'];
+                                    $kelas=$row2['kode_jurusan'];
                                         // $kelas3 = mysqli_query($conn, "SELECT * from jurusan where nama_jurusan = '$kelas'");
                                         // $ruw = mysqli_fetch_array($kelas3);
                                     ?>
                             
-                                <button class="tablinks" onclick="openCity(event, '<?php echo $row2['nama_jurusan']; ?>')"><?php echo $row2['nama_jurusan']; ?></button>
+                                <button class="tablinks" onclick="openCity(event, '<?php echo $row2['kode_jurusan']; ?>')"><?php echo $row2['nama_jurusan']; ?></button>
                                 <?php
                                         }
                                     ?>
@@ -247,11 +247,11 @@ $kelasdb = query("SELECT * FROM kelas");
                                      <?php
                                         $kelas2 = mysqli_query($conn, "select * from jurusan");
                                         while($row2=mysqli_fetch_array($kelas2)){
-                                        $kelas=$row2['nama_jurusan'];
+                                        $kelas=$row2['kode_jurusan'];
                                             // $kelas3 = mysqli_query($conn, "select * from jurusan where nama_jurusan = '$kelas'");
                                             // $ruw = mysqli_fetch_array($kelas3);
                                         ?>
-                                <div id="<?php echo $row2['nama_jurusan']; ?>" class="tabcontent">                               
+                                <div id="<?php echo $row2['kode_jurusan']; ?>" class="tabcontent">                               
                                     <h4 class="page-header" style="margin-top:7px;" align="center">
                                         Daftar Kelas
                                     </h4>
@@ -272,7 +272,7 @@ $kelasdb = query("SELECT * FROM kelas");
                                                     // FROM kelas, jurusan
                                                     // WHERE kelas.id=jurusan.id AND kelas.kode_jurusan=jurusan.kode_jurusan AND kelas.nama_jurusan='$kelas
                                                     // order by nama_jurusan asc");
-                                                    $view1= mysqli_query($conn, "SELECT * FROM kelas WHERE nama_jurusan= '$kelas'");
+                                                    $view1= mysqli_query($conn, "SELECT * FROM kelas WHERE kode_jurusan= '$kelas'");
                                                     while($raw1=mysqli_fetch_array($view1)){
                                                     // ?>
                                             <tr>
@@ -319,8 +319,7 @@ $kelasdb = query("SELECT * FROM kelas");
 </div>
 
 <!-- wrapper close -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
     </script>

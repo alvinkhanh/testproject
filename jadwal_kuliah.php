@@ -331,8 +331,6 @@ require 'assets/function/function.php';
                                 $kelas2 = mysqli_query($conn, "SELECT * FROM kelas WHERE kode_jurusan='$kelas' ");
                                 while($row2=mysqli_fetch_array($kelas2)){
                                 $kelas=$row2['kelas'];
-                                // $kelas3 = mysqli_query($conn, "SELECT * from jurusan where nama_jurusan = '$kelas'");
-                                // $ruw = mysqli_fetch_array($kelas3);
                                 ?>
                                         
                                 <button class="tablinks" onclick="openCity(event, '<?php echo $row2['kelas']; ?>')"><?php echo $row2['kelas']; ?></button>

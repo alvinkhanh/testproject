@@ -25,38 +25,44 @@ if( isset($_POST["register"]) ) {
 
 // cek tombol login
 if (isset($_POST["login"])) {
-
-            $username = $_POST["username"];
-            $password3 = $_POST["password3"];
+    $username = $_POST["username"];
+    $password3 = $_POST["password3"];
     
-            $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'");
+    $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'");
 
-            // cek username
-            if (mysqli_num_rows($result) ===1 ) {
-            // cek password 
-            $row = mysqli_fetch_assoc($result);
-            // fungsi password
-            if ( password_verify($password3, $row["password"])){
-                // session
-                if($row['role']=="admin"){
+    // cek username
+    if (mysqli_num_rows($result) ===1) {
+        // cek password
+        $row = mysqli_fetch_assoc($result);
+        // fungsi password
+        if (password_verify($password3, $row["password"])) {
+            // session
+            if ($row['role']=="admin") {
 
                             //   buat session login dan username
-                            $_SESSION['username'] = $username;
-                            $_SESSION['role'] = "admin";
-                            // alihkan ke halaman dashboard admin
-                            header("location: index.php");
+                $_SESSION['username'] = $username;
+                $_SESSION['role'] = "admin";
+                // alihkan ke halaman dashboard admin
+                header("location: index.php");
 
-                            // cek jika user login sebagai pegawai
-                    }else if($row['role']=="dosen"){
-                            // buat session login dan username
-                            $_SESSION['username'] = $username;
-                            $_SESSION['role'] = "dosen";
-                            // alihkan ke halaman dashboard pegawai
-                            header("location: dosen/index.php");
-                                            exit;
-                                        }
-                                    }
-// bila tidak ada username atau pass
+            // cek jika user login sebagai pegawai
+            } elseif ($row['role']=="dosen") {
+                // buat session login dan username
+                $_SESSION['username'] = $username;
+                $_SESSION['role'] = "dosen";
+                // alihkan ke halaman dashboard pegawai
+                header("location: dosen/index.php");
+                exit;
+            } elseif ($row['role']=="user") {
+                // buat session login dan username
+                $_SESSION['username'] = $username;
+                $_SESSION['role'] = "user";
+                // alihkan ke halaman dashboard pegawai
+                header("location: mahasiswa/index.php");
+                exit;
+            }
+        }
+        // bila tidak ada username atau pass
         $error = true;
     }
 }

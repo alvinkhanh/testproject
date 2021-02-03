@@ -227,7 +227,7 @@ require 'assets/function/function.php';
         if(@$_POST['input']){
             $hari=$_POST['hari'];
             $jurusan=$_POST['jurusan'];
-            $mengajar=$_POST['mengajar'];
+            $mengajar=$_POST['id_mengajar'];
             $kelas=$_POST['kelas'];
             $jam_masuk=$_POST['jam_masuk'];
             $jam_keluar=$_POST['jam_keluar'];

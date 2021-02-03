@@ -1,0 +1,238 @@
+.jumbotron{
+    width: 100%;
+    padding: 15px 20px;
+    height: 350px;
+    max-height: 450px;
+    & #isi-jumbotron{
+        margin-top: 40px;
+        padding-left: 40px;
+    }
+}
+// jam
+.waktu{
+    & .datetime{
+        color: white;
+        background: #333341;
+        width: 260px;
+        max-width: 260px;
+        height: 100px;
+        padding: 15px 10px;
+        border: 3px solid lightblue;
+        border-radius: 5px;
+        transition: 0.5s;
+        transition-property: background, box-shadow;
+    }
+    & .date{
+        font-size: 10px;
+        font-weight: 300;
+        text-align: center;
+        letter-spacing: 3px;
+    }
+    & .time{
+        font-size: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    & .datetime:hover{
+        background: lightskyblue;
+        box-shadow: 0 0 30px lightskyblue;
+    }
+    & .time span:not(:last-child){
+        position: relative;
+        margin: 0 2px;
+        font-weight: center;
+        letter-spacing: 3px;
+    }
+    & .time span:last-child{
+        background: #2e94e3;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        padding: 0 5px;
+        border-radius: 3px;
+    }
+}
+
+/*info panel*/
+.info-panel{
+	box-shadow: 0 3px 20px rgba(0,0,0,0.5);
+	border-radius: 12px;
+    margin-top: -140px;
+    max-width: 800px;
+	background-color: white;
+    padding: 40px;
+    justify-content: center;
+    align-content: center;
+}
+
+.info-panel{
+    // chart info
+    & .card h5{
+        padding-top: 40px;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.card-icon{
+    position: absolute;
+    z-index: 0;
+    top: 25px;
+    right: 4px;
+    opacity: 0.4;
+    font-size: 90px;
+}
+// content 2
+// card 2
+.content2{
+    padding-top: 30px;
+    max-width: 900px;
+    // progress bar
+    & #isi2 #activity {
+        height: 400px;
+        max-width: 400px;
+    }
+    & #isi2 #activity .taks {
+        position: relative;
+        display: flex;
+        margin: 20px 0;
+        padding: 20px 10px 18px;
+        background: salmon;
+        overflow:hidden;
+        border: 2px solid black;
+        border-radius: 8px;
+        transition: 0.5s;
+    }
+    // animati zoom & blur
+    & #isi2 #activity:hover .taks {
+        opacity: 0.5;   
+    }
+    & #isi2 #activity .taks:hover {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    & #isi2 #activity .nama-taks {
+        position: relative;
+        width: 110px;
+        text-align: right;
+        color: black;
+        margin-top: -2px;
+        text-transform: uppercase;
+    }
+    & #isi2 #activity .value {
+        position: relative;
+        width: 40px;
+        text-align: left;
+        color: black;
+        margin-top: -2px;
+        text-transform: uppercase;
+    }
+    & #isi2 #activity .percent {
+        position: relative;
+        width: calc(100% - 150px);
+        height: 20px;
+        margin: 0 10px;
+        border-radius: 10px;
+        background: white;
+        box-shadow: inset 0 0 10px black;
+        overflow: hidden;
+    }
+    & #isi2 #activity .percent .progres {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 70%;
+        height: 100%;
+        border-radius: 10px;
+        background: blue;
+        box-shadow: inset 0 0 2px black;
+        animation: animate 4s ease-in-out forwards;
+    }
+    // animasi gradasi warna progresbar
+    @keyframes animate {
+        from{
+            width: 0;
+        }
+    }
+    & #isi2 #activity .taks:nth-child(1) .percent .progres{
+        background: linear-gradient(45deg, green, yellow);
+    }
+    & #isi2 #activity .taks:nth-child(2) .percent .progres{
+        background: linear-gradient(45deg, green, yellow);
+    }
+    & #isi2 #activity .taks:nth-child(3) .percent .progres{
+        background: linear-gradient(45deg, green, yellow);
+    }
+    & #isi2 #activity .taks:nth-child(4) .percent .progres{
+        background: linear-gradient(45deg, green, yellow);
+    }
+
+    // table
+    & #bungkus2{
+        padding: 20px;    
+    }
+    & #bungkus2 #table{
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        overflow: auto;    
+    }
+}
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 992px){
+    .content2{
+        max-width: 800px;
+    }
+}
+@media only screen and(max-width: 768px){
+    .jumbotron{
+        width: 100%;
+        padding: 15px 20px;
+        height: 400px;
+        & #isi-jumbotron{
+            text-align: center;
+            margin-top: 20px;
+            padding-left: 20px;
+        }
+        & #teks{
+            flex: 100%;
+            max-width: 100%;
+        }
+        & #waktu{
+            justify-content: center;
+            justify-items: center;
+            flex: auto;
+            max-width: 100%;
+        }
+    }
+    .info-panel{
+        max-width: 600px;
+        transition: all 0.5s ease;
+        & .card-isi2 {
+            width: 100%;
+            align-content: center;
+            justify-content: center;
+            display: inline;
+        }
+        & .card-isi2 .col-8{
+            max-width: 100%;
+            text-align: center;
+        }
+        & .card-isi2 .col-4{
+            width: 400px!important;
+            margin-left: 100px;
+        }
+    }
+    
+}
+@media only screen and(max-width: 551px){
+}  
+@media only screen and(max-width: 375px){
+} 
